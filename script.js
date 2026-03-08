@@ -123,4 +123,19 @@
       el.classList.add('reveal--visible');
     });
   }
+
+  /* --- Certifications show more / show less --- */
+  var certToggle = document.getElementById('certToggle');
+  var certGrid = document.getElementById('certGrid');
+
+  if (certToggle && certGrid) {
+    certToggle.addEventListener('click', function () {
+      var isExpanded = certGrid.classList.contains('cert-grid--expanded');
+      certGrid.classList.toggle('cert-grid--expanded');
+      certToggle.classList.toggle('cert-toggle--expanded');
+      certToggle.setAttribute('aria-expanded', String(!isExpanded));
+      certToggle.querySelector('.cert-toggle__text').textContent =
+        isExpanded ? 'Show 4 More' : 'Show Less';
+    });
+  }
 })();
