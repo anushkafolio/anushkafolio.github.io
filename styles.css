@@ -296,6 +296,8 @@ ul {
   justify-content: center;
   text-align: center;
   padding: 120px 24px 80px;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
   position: relative;
   background: linear-gradient(135deg, #2b2d42 0%, #3d405b 35%, #4a3f5c 65%, #5c3d4f 100%);
   overflow: hidden;
@@ -660,122 +662,66 @@ ul {
    Experience
    ======================================== */
 
-.experience__list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  position: relative;
-  padding-left: 40px;
-}
-
-.experience__list::before {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 32px;
-  bottom: 32px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--accent), var(--accent-2), var(--accent-3));
-  border-radius: 2px;
+.experience__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
 .exp-card {
   background: var(--white);
   border-radius: var(--radius);
-  padding: 36px;
+  padding: 32px;
   box-shadow: var(--card-shadow);
   border: 1px solid rgba(0, 0, 0, 0.04);
+  border-top: 3px solid var(--accent);
   transition: transform var(--transition), box-shadow var(--transition);
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.exp-card::before {
-  content: '';
-  position: absolute;
-  left: -39px;
-  top: 42px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 3px solid var(--accent);
-  z-index: 1;
-  transition: transform var(--transition), background var(--transition);
-}
-
-.exp-card:nth-child(2)::before { border-color: var(--accent-2); }
-.exp-card:nth-child(3)::before { border-color: var(--accent-3); }
-
-.exp-card:hover::before {
-  background: var(--accent);
-  transform: scale(1.15);
-}
-
-.exp-card:nth-child(2):hover::before { background: var(--accent-2); }
-.exp-card:nth-child(3):hover::before { background: var(--accent-3); }
+.exp-card:nth-child(2) { border-top-color: var(--accent-2); }
+.exp-card:nth-child(3) { border-top-color: var(--accent-3); }
 
 .exp-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--card-shadow-hover);
-}
-
-.exp-card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.exp-card__role {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--primary);
-  line-height: 1.3;
-  margin-bottom: 4px;
-}
-
-.exp-card__org {
-  font-size: 0.88rem;
-  color: var(--text-muted);
 }
 
 .exp-card__period {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  flex-shrink: 0;
-  padding-top: 4px;
+  letter-spacing: 0.06em;
 }
 
-.exp-card__details {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.exp-card:nth-child(2) .exp-card__period { color: var(--accent-2); }
+.exp-card:nth-child(3) .exp-card__period { color: #c99a2e; }
+
+.exp-card__role {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1.3;
 }
 
-.exp-card__details li {
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: var(--text);
-  padding-left: 20px;
-  position: relative;
+.exp-card__org {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
-.exp-card__details li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.6em;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--accent);
-  opacity: 0.5;
+.exp-card__tag {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
 
@@ -1023,6 +969,7 @@ ul {
   margin-top: 32px;
   padding-top: 28px;
   border-top: 1px solid var(--border);
+  flex-wrap: wrap;
 }
 
 .highlight {
@@ -1257,7 +1204,12 @@ ul {
   }
 
   .extra__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .experience__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
   .exp-card {
@@ -1279,49 +1231,7 @@ ul {
     padding: 0 20px;
   }
 
-  .about {
-    grid-template-columns: 180px 1fr;
-    gap: 32px;
-  }
-
-  .about__portrait {
-    position: static;
-  }
-
-  .hero__intro {
-    font-size: 0.98rem;
-  }
-
-  .contact__card {
-    padding: 28px 32px;
-    min-width: 200px;
-  }
-
-  .nav__menu {
-    gap: 28px;
-  }
-}
-
-
-/* ========================================
-   Responsive — Mobile (≤ 640px)
-   ======================================== */
-
-@media (max-width: 640px) {
-  .section {
-    padding: 64px 0;
-  }
-
-  .section__title {
-    margin-bottom: 32px;
-    font-size: clamp(1.5rem, 5vw, 1.8rem);
-  }
-
-  .section__label {
-    margin-bottom: 8px;
-  }
-
-  /* Navigation mobile */
+  /* ---- Navigation → hamburger at 768px ---- */
   .nav {
     padding: 0 16px;
   }
@@ -1357,7 +1267,6 @@ ul {
     transform: translateX(0);
   }
 
-  /* Mobile menu backdrop overlay */
   .nav__overlay {
     display: block;
     position: fixed;
@@ -1380,8 +1289,64 @@ ul {
     color: var(--text-muted);
   }
 
+  .nav__link::after {
+    display: none;
+  }
+
   .nav__toggle span {
     background-color: var(--primary);
+  }
+
+  /* ---- About → single column ---- */
+  .about {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about__portrait {
+    position: static;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  /* ---- Experience → single column ---- */
+  .experience__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* ---- Extra → single column ---- */
+  .extra__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__intro {
+    font-size: 0.98rem;
+  }
+
+  .contact__card {
+    padding: 28px 32px;
+    min-width: 200px;
+  }
+}
+
+
+/* ========================================
+   Responsive — Mobile (≤ 640px)
+   ======================================== */
+
+@media (max-width: 640px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .section__title {
+    margin-bottom: 32px;
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
+  }
+
+  .section__label {
+    margin-bottom: 8px;
   }
 
   /* Hero mobile */
@@ -1432,16 +1397,28 @@ ul {
     display: none;
   }
 
-  /* About mobile */
+  /* Hero blobs mobile */
+  .hero::before {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    right: -80px;
+  }
+
+  .hero::after {
+    width: 250px;
+    height: 250px;
+    bottom: -80px;
+    left: -60px;
+  }
+
+  /* About mobile refinements */
   .about {
-    grid-template-columns: 1fr;
     gap: 28px;
   }
 
   .about__portrait {
-    position: static;
     max-width: 180px;
-    margin: 0 auto;
   }
 
   .about__text .section__title {
@@ -1458,6 +1435,14 @@ ul {
     gap: 8px;
   }
 
+  .about__highlights {
+    gap: 20px;
+  }
+
+  .highlight__number {
+    font-size: 1.6rem;
+  }
+
   /* Education mobile */
   .edu-card {
     padding: 24px;
@@ -1472,82 +1457,21 @@ ul {
   }
 
   /* Experience mobile */
-  .exp-card {
-    padding: 22px;
+  .experience__grid {
+    gap: 16px;
   }
 
-  .exp-card__header {
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 16px;
+  .exp-card {
+    padding: 24px;
   }
 
   .exp-card__role {
-    font-size: 1.12rem;
-  }
-
-  .exp-card__period {
-    padding-top: 0;
-    font-size: 0.76rem;
-  }
-
-  .exp-card__details {
-    gap: 8px;
-  }
-
-  .exp-card__details li {
-    font-size: 0.88rem;
-    line-height: 1.6;
-    padding-left: 16px;
-  }
-
-  .exp-card__details li::before {
-    width: 5px;
-    height: 5px;
-  }
-
-  /* Timeline mobile */
-  .experience__list {
-    padding-left: 28px;
-  }
-
-  .experience__list::before {
-    left: 5px;
-  }
-
-  .exp-card::before {
-    left: -28px;
-    width: 12px;
-    height: 12px;
+    font-size: 1.1rem;
   }
 
   /* Cert grid mobile */
   .cert-grid {
     grid-template-columns: 1fr;
-  }
-
-  /* Hero blobs mobile */
-  .hero::before {
-    width: 300px;
-    height: 300px;
-    top: -100px;
-    right: -80px;
-  }
-
-  .hero::after {
-    width: 250px;
-    height: 250px;
-    bottom: -80px;
-    left: -60px;
-  }
-
-  /* About highlights mobile */
-  .about__highlights {
-    gap: 20px;
-  }
-
-  .highlight__number {
-    font-size: 1.6rem;
   }
 
   /* Credentials mobile */
@@ -1662,6 +1586,15 @@ ul {
     font-size: 3rem;
   }
 
+  .about__highlights {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .highlight__number {
+    font-size: 1.4rem;
+  }
+
   .edu-card {
     padding: 20px;
   }
@@ -1671,15 +1604,11 @@ ul {
   }
 
   .exp-card {
-    padding: 18px;
+    padding: 20px;
   }
 
   .exp-card__role {
     font-size: 1rem;
-  }
-
-  .exp-card__details li {
-    font-size: 0.84rem;
   }
 
   .cert-card__icon {

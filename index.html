@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Anushka Chandra — Educator</title>
   <meta name="description" content="Anushka Chandra is a qualified educator with dual Master's degrees in English Literature and Political Science, relocating to the United Kingdom.">
   <meta property="og:title" content="Anushka Chandra — Educator">
@@ -108,7 +108,7 @@
               <span class="highlight__label">Students Impacted</span>
             </div>
             <div class="highlight">
-              <span class="highlight__number">7</span>
+              <span class="highlight__number" id="certCount">0</span>
               <span class="highlight__label">Certifications</span>
             </div>
           </div>
@@ -168,51 +168,27 @@
     <div class="container">
       <p class="section__label reveal">Experience</p>
       <h2 class="section__title reveal">Teaching practice</h2>
-      <div class="experience__list">
+      <div class="experience__grid">
 
         <article class="exp-card reveal">
-          <div class="exp-card__header">
-            <div>
-              <h3 class="exp-card__role">Teacher of Social Science</h3>
-              <p class="exp-card__org">Army Public School, Uttarakhand, India</p>
-            </div>
-            <span class="exp-card__period">Jul 2025 – Present</span>
-          </div>
-          <ul class="exp-card__details">
-            <li>Plan and deliver Social Science lessons for CBSE Classes 9–10 (ages 14–16), using clear learning intentions, structured practice, and purposeful questioning to secure understanding.</li>
-            <li>Develop pupils' disciplinary literacy through explicit teaching of subject vocabulary, source analysis, evidence selection, and extended written responses.</li>
-            <li>Use formative assessment and adaptive teaching to address misconceptions, support differing attainment levels, and contribute to improved pupil grades, while maintaining positive classroom routines and communication with parents/carers.</li>
-          </ul>
+          <span class="exp-card__period">Jul 2025 – Present</span>
+          <h3 class="exp-card__role">Teacher of Social Science</h3>
+          <p class="exp-card__org">Army Public School, Ranikhet, Uttarakhand, India</p>
+          <span class="exp-card__tag">CBSE · Classes 9–10</span>
         </article>
 
         <article class="exp-card reveal">
-          <div class="exp-card__header">
-            <div>
-              <h3 class="exp-card__role">Teacher of English</h3>
-              <p class="exp-card__org">Krishna Grambharti Global School, Uttar Pradesh, India</p>
-            </div>
-            <span class="exp-card__period">Jul 2023 – May 2024</span>
-          </div>
-          <ul class="exp-card__details">
-            <li>Taught English to CBSE Classes 9–10 (ages 14–16), helping pupils strengthen reading, writing, grammar, vocabulary, and spoken communication.</li>
-            <li>Improved attainment through regular assessment, targeted feedback, and structured practice in comprehension, paragraphing, and exam-style writing.</li>
-            <li>Created a supportive classroom environment that built pupils' confidence, encouraged active participation, and enabled learners at different starting points to make progress.</li>
-          </ul>
+          <span class="exp-card__period">Jul 2023 – May 2024</span>
+          <h3 class="exp-card__role">Teacher of English</h3>
+          <p class="exp-card__org">Krishna Grambharti Global School, Moradabad, Uttar Pradesh, India</p>
+          <span class="exp-card__tag">CBSE · Classes 9–10</span>
         </article>
 
         <article class="exp-card reveal">
-          <div class="exp-card__header">
-            <div>
-              <h3 class="exp-card__role">Teaching Intern — Social Science &amp; English</h3>
-              <p class="exp-card__org">Government Inter College, Uttarakhand, India</p>
-            </div>
-            <span class="exp-card__period">Dec 2021 – May 2022</span>
-          </div>
-          <ul class="exp-card__details">
-            <li>Supported the delivery of Social Science and English lessons for Classes 9–10 (ages 14–16), assisting with classroom instruction, questioning, and small-group learning.</li>
-            <li>Helped reinforce pupil understanding through guided practice, formative assessment, and targeted support, contributing to improved progress and grades.</li>
-            <li>Gained practical experience in lesson preparation, behaviour management, differentiation, and day-to-day school routines under the guidance of experienced teachers.</li>
-          </ul>
+          <span class="exp-card__period">Dec 2021 – May 2022</span>
+          <h3 class="exp-card__role">Teaching Intern</h3>
+          <p class="exp-card__org">Government Inter College, Bhimtal, Uttarakhand, India</p>
+          <span class="exp-card__tag">Social Science &amp; English</span>
         </article>
 
       </div>
@@ -249,7 +225,7 @@
 
       <!-- Certifications Grid -->
       <h3 class="cred-section-subtitle reveal">Certifications</h3>
-      <div class="cert-grid reveal" id="certGrid">
+      <div class="cert-grid reveal" id="certGrid" data-visible="3">
         <div class="cert-card">
           <div class="cert-card__level-tag cert-card__level-tag--advanced">Advanced</div>
           <div class="cert-card__icon" aria-hidden="true">
@@ -258,14 +234,14 @@
           <h4 class="cert-card__name">The Economics of AI</h4>
           <p class="cert-card__org">University of Virginia · Coursera</p>
         </div>
-        <div class="cert-card">
+        <!-- <div class="cert-card">
           <div class="cert-card__level-tag cert-card__level-tag--intermediate">Intermediate</div>
           <div class="cert-card__icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg>
           </div>
           <h4 class="cert-card__name">Healthy &amp; Sustainable Foods and Products</h4>
           <p class="cert-card__org">University of Michigan · Coursera</p>
-        </div>
+        </div> -->
         <div class="cert-card">
           <div class="cert-card__level-tag cert-card__level-tag--beginner">Beginner</div>
           <div class="cert-card__icon" aria-hidden="true">
@@ -275,8 +251,7 @@
           <p class="cert-card__org">Imperial College London · Coursera</p>
         </div>
 
-        <!-- Hidden certs (shown on toggle) -->
-        <div class="cert-card cert-card--hidden">
+        <div class="cert-card">
           <div class="cert-card__icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg>
           </div>
@@ -308,7 +283,7 @@
 
       <div class="cert-toggle-wrap reveal">
         <button class="cert-toggle" id="certToggle" aria-expanded="false">
-          <span class="cert-toggle__text">Show 4 More</span>
+          <span class="cert-toggle__text">Show More</span>
           <svg class="cert-toggle__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
       </div>

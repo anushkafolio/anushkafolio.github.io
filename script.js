@@ -128,14 +128,45 @@
   var certToggle = document.getElementById('certToggle');
   var certGrid = document.getElementById('certGrid');
 
-  if (certToggle && certGrid) {
-    certToggle.addEventListener('click', function () {
-      var isExpanded = certGrid.classList.contains('cert-grid--expanded');
-      certGrid.classList.toggle('cert-grid--expanded');
-      certToggle.classList.toggle('cert-toggle--expanded');
-      certToggle.setAttribute('aria-expanded', String(!isExpanded));
-      certToggle.querySelector('.cert-toggle__text').textContent =
-        isExpanded ? 'Show 4 More' : 'Show Less';
+  if (certGrid) {
+    var allCards = certGrid.querySelectorAll('.cert-card');
+    var visibleCount = parseInt(certGrid.getAttribute('data-visible'), 10) || 3;
+    var hiddenCount = 0;
+
+    // Update the about-section highlight count dynamically
+    var certCountEl = document.getElementById('certCount');
+    if (certCountEl) {
+      certCountEl.textContent = allCards.length;
+    }
+
+    // Auto-mark cards beyond visibleCount as hidden
+    allCards.forEach(function (card, i) {
+      if (i >= visibleCount) {
+        card.classList.add('cert-card--hidden');
+        hiddenCount++;
+      } else {
+        card.classList.remove('cert-card--hidden');
+      }
     });
+
+    // Hide toggle if nothing to show/hide
+    if (certToggle) {
+      var toggleWrap = certToggle.closest('.cert-toggle-wrap');
+      if (hiddenCount === 0 && toggleWrap) {
+        toggleWrap.style.display = 'none';
+      } else {
+        certToggle.querySelector('.cert-toggle__text').textContent =
+          'Show ' + hiddenCount + ' More';
+
+        certToggle.addEventListener('click', function () {
+          var isExpanded = certGrid.classList.contains('cert-grid--expanded');
+          certGrid.classList.toggle('cert-grid--expanded');
+          certToggle.classList.toggle('cert-toggle--expanded');
+          certToggle.setAttribute('aria-expanded', String(!isExpanded));
+          certToggle.querySelector('.cert-toggle__text').textContent =
+            isExpanded ? 'Show ' + hiddenCount + ' More' : 'Show Less';
+        });
+      }
+    }
   }
 })();
